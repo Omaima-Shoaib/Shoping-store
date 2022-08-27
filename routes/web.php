@@ -30,8 +30,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //admin routes
-Route::get('admin/products', [App\Http\Controllers\AdminController::class, 'index'])->name('products')->middleware(['auth','isAdmin']);
-Route ::get('products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
+Route::get('admin/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products')->middleware(['auth','isAdmin']);
+Route ::get('admin/products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
+Route ::post('/admin/products',[ProductController::class,'store'])->name('products.store')->middleware(['auth','isAdmin']);
 
 
 
