@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,14 @@ require __DIR__.'/auth.php';
 
 // Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//admin routes
 Route::get('admin/products', [App\Http\Controllers\AdminController::class, 'index'])->name('products')->middleware(['auth','isAdmin']);
+Route ::get('products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
 
-Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
-});
+
+// Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+
+// });
