@@ -49,7 +49,7 @@ class ProductController extends Controller
                 
             ]);
         $product->save();
-        return route('products');
+        return redirect('admin/products');
     }
 
     /**

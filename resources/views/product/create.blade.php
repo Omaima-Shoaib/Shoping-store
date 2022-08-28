@@ -36,6 +36,7 @@
         textarea{
             border: 1px solid #112739;
             border-radius: 20px;
+            padding-left: 10px;
             
         }
         .file{
@@ -74,7 +75,7 @@
 </head>
 <body>
     
-    @extends('layouts.app')
+    @extends('layouts.admindashboard')
 @section('content')
 
     <div class="containerss">
