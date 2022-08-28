@@ -119,8 +119,24 @@
 <td >
 <table>
     <tr>
-    <td><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></td>
-    <td><div class="btndelete"><button type="reset" class="btnss"> <b> Delete</b></button></div></td>
+    <td>
+        
+        <a href="{{ route('products.edit',['id'=>$product['id']]) }}"><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></a></td>
+        
+
+    <td><div class="btndelete">
+        
+        <form action="{{ route('products.delete',['id'=>$product['id']]) }}" method="POST">
+            @csrf
+            @method('Delete')
+        <button type='submit' class="btnss">
+         Delete</button>
+        </form>
+    </div></td>   
+       
+
+
+
     </tr>      
 </table>
 </td>

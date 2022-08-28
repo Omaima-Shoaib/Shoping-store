@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\View;
+
+use function PHPUnit\Framework\isNull;
 
 class ProductController extends Controller
 {
@@ -16,7 +19,7 @@ class ProductController extends Controller
     {
        $products= Product::paginate(15);
 
-      return view('product.index',['products'=>$products]);
+      return View('product.index',['products'=>$products]);
        
     }
 
@@ -69,9 +72,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
-        //
+        $products= Product::where('id',$request['id'])->get();
+        return view('product.edit',['products'=>$products]);
     }
 
     /**
@@ -83,7 +87,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        // dd($request);
+      if(!isNull($request['image'])){
+//  return 'notnull';
+       $data['image']= $request->file('image')->store('products','images');
+        Product::where('id',$id)->update(['category'=>$request['category'],'price'=>$request['price'],
+        'description'=>$request['desctiption'],'image'=>$data['image']]);
+        return redirect('admin/products');
+        
+    }else{
+        Product::where('id',$id)->update(['category'=>$request['category'],'price'=>$request['price'],
+        'description'=>$request['description']]);
+        return redirect('admin/products');
+        
+    }
+
+     
     }
 
     /**
@@ -92,9 +112,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Request $request, $id)
     {
-        //
+       Product::find($id)->delete();
+       return redirect('admin/products');
+
     }
 
     public function getProduct($category){
