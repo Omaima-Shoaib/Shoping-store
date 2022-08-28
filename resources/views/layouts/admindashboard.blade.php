@@ -67,7 +67,7 @@
                         <a class="dropdown-item" href="{{ route('products') }}">
                         New Admin
                         </a>
-                        <a class="dropdown-item" href="{{ route('products.create') }}">
+                        <a class="dropdown-item" href="{{ route('users.index') }}">
                         List Users
                         </a>
                     </div>
