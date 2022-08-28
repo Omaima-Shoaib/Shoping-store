@@ -96,4 +96,9 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function getProduct($category){
+      $products = Product::where("category", $category)->paginate(15);
+      return response()->json($products,200);
+    }
 }

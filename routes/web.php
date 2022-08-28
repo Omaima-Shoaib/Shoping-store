@@ -28,13 +28,13 @@ require __DIR__.'/auth.php';
 // Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 //admin routes
 Route::get('admin/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products')->middleware(['auth','isAdmin']);
-Route ::get('admin/products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
-Route ::post('/admin/products',[ProductController::class,'store'])->name('products.store')->middleware(['auth','isAdmin']);
+Route::get('admin/products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
+Route::post('/admin/products',[ProductController::class,'store'])->name('products.store')->middleware(['auth','isAdmin']);
 
-
+//user routes
+Route::get('product/{category}',[ProductController::class,'getProduct'])->name('products.getProduct')->middleware(['auth']);
 
 // Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
