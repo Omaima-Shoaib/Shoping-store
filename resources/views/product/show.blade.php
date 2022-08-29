@@ -62,29 +62,33 @@
             margin-top: 30px;
             margin-left: 20px;
         }
-        .counter{
-            width: 30px;
-            text-align: center
-        }
+     
         .counter{
 background-color: transparent;
-border: none;font-size: 20px
+border: none;
+font-size: 20px;
+text-align: center;
+width: 20px
         }
         #add{
             background-color: #112739;
             color: white;
             border: none;
-            width: 30px;
-            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            border:1px solid #112739;
+            border-radius: 100%;
             font-size: 20px;
+            text-align: center
             
         }
         #add:hover{
-            background-color: #112739;
-            color: white;
-            border: none;
-            width: 30px;
-            border-radius: 5px;
+            color: #112739;
+            background-color: transparent;
+            border:1px solid #112739;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
             font-size: 20px;
             box-shadow:5px 5px 10px #9e9e9e;
 
@@ -92,7 +96,7 @@ border: none;font-size: 20px
         }
         .countercontainer{
             /* margin: auto; */
-            width: 20%;
+            width: 40%;
             margin-left: 20px;
             margin-top: 40px
         }
