@@ -45,9 +45,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $users=User::where($request['variables'],$request['input'])->get();
+        return view('users.show',['users'=>$users]);
+
+        // dd($request['input']);
     }
 
     /**

@@ -37,10 +37,15 @@ Route::post('/admin/products',[ProductController::class,'store'])->name('product
 Route::delete('/admin/products/{id}',[ProductController::class,'delete'])->where('id','[0-9]+') ->name('products.delete')->middleware(['auth','isAdmin']);
 Route::get('admin/products/{id}/edit',[ProductController::class,'edit'])->where('id','[0-9]+')->name('products.edit')->middleware(['auth','isAdmin']);
 Route::put('admin/products/{id}',[ProductController::class,'update'])->name('products.update')->middleware(['auth','isAdmin']);
+Route ::get('admin/{id}',[UserController::class,'show'])->name('users.show');
+
+
+
 
 //user routes
 Route::get('product/{category}',[ProductController::class,'getProduct'])->name('products.getProduct')->middleware(['auth']);
 
-// Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
-// });
+
+
+
