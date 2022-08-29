@@ -102,8 +102,6 @@ class ProductController extends Controller
         return redirect('admin/products');
         
     }
-
-     
     }
 
     /**
@@ -114,13 +112,17 @@ class ProductController extends Controller
      */
     public function delete(Request $request, $id)
     {
-       Product::find($id)->delete();
-       return redirect('admin/products');
-
+        Product::find($id)->delete();
+        return redirect('admin/products');
     }
 
-    public function getProduct($category){
-      $products = Product::where("category", $category)->paginate(15);
-      return response()->json($products,200);
+    public function filterByCategory($category){
+        $products = Product::where("category", $category)->paginate(15);
+        return response()->json($products,200);
+    }
+
+    public function get($id){
+        $product = Product::find($id)->get();
+        return response()->json($product,200);
     }
 }

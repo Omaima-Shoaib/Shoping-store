@@ -39,12 +39,9 @@ Route::get('admin/products/{id}/edit',[ProductController::class,'edit'])->where(
 Route::put('admin/products/{id}',[ProductController::class,'update'])->name('products.update')->middleware(['auth','isAdmin']);
 Route ::get('admin/{id}',[UserController::class,'show'])->name('users.show');
 
-
-
-
-//user routes
-Route::get('product/{category}',[ProductController::class,'getProduct'])->name('products.getProduct')->middleware(['auth']);
-
+//user routesg
+Route::get('product/{category}',[ProductController::class,'filterByCategory'])->name('products.filterByCategory');
+Route::get('productGetById/{id}',[ProductController::class,'get'])->name('products.get')->middleware(['auth']);
 
 
 
