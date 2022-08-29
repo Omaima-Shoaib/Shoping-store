@@ -122,7 +122,9 @@ class ProductController extends Controller
     }
 
     public function get($id){
-        $product = Product::find($id)->get();
-        return response()->json($product,200);
+        $products = Product::where('id',$id)->get();
+        // dd($products);
+        return view('product.show',['products'=>$products]);
+        // return response()->json($product,200);
     }
 }
