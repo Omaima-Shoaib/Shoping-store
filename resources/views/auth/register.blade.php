@@ -66,7 +66,7 @@
                             <select id="subscription" name="membership">
                                 <option value="Platinum">Platinum</option>
                                 <option value="Gold">Gold</option>
-                                <opton value="none">none</option>
+                                <option value="none">none</option>
                             </select>
                         </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -40,9 +41,14 @@ Route::get('admin/products/{id}/edit',[ProductController::class,'edit'])->where(
 Route::put('admin/products/{id}',[ProductController::class,'update'])->name('products.update')->middleware(['auth','isAdmin']);
 Route ::get('admin/{id}',[UserController::class,'show'])->name('users.show');
 
+
+
 //user routesg
 Route::get('product/{category}',[ProductController::class,'filterByCategory'])->name('products.filterByCategory');
 Route::get('productGetById/{id}',[ProductController::class,'get'])->name('products.get')->middleware(['auth']);
+Route::post('/cart',[CartController::class,'store'])->name('cart.store')->middleware('auth');
+Route ::get('/cart',[CartController::class,'index'])->name('cart.index')->middleware(['auth']);
+Route::delete('/cart/{id}',[CartController::class,'delete'])->where('id','[0-9]+') ->name('cart.delete')->middleware(['auth','isAdmin']);
 
 
 

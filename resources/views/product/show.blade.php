@@ -68,7 +68,7 @@ background-color: transparent;
 border: none;
 font-size: 20px;
 text-align: center;
-width: 20px
+width: 30px;
         }
         #add{
             background-color: #112739;
@@ -123,7 +123,7 @@ width: 20px
     </style>
 </head>
 <body>
-    @extends('layouts.admindashboard')
+    @extends('layouts.app')
     @section('content')
 
     <div>
@@ -150,15 +150,22 @@ width: 20px
             ${{$product['price'] }}
             </div>
           <div>
+          <form action="{{ route('cart.store',['id'=>$product['id'],'price'=>$product['price'],'quantity'=>'quantity']) }}" method="post">
 
         <div class="countercontainer">
-            <button onclick="CountFun()" id="add">+</button>
-        
+            <button type="button" onclick="CountFun()" id="add">+</button>
+        <input type="text" hidden name="price" value="{{ $product['price'] }}">
+        {{-- <input type="text" hidden name="total" value="{{ $product['price'] }}"> --}}
           <input type="text" name="quantity"  id="quantityvalue" value='1' class="counter">
-            <button onclick="CountDown()" id="add">-</button>
+<input type="text" hidden name="image" value="{{ $product['image'] }}">
+            <button type="button" onclick="CountDown()" id="add">-</button>
+            <input type="text" name="category" value=" {{$product['category'] }} " hidden>
+            <input type="text" name="description" value=" {{$product['description'] }} " hidden>
+
           </div>
           <div class='crtbtncontainer'>
-          <button class="crtbtn"> Add to Cart</button>
+          <button class="crtbtn" onclick="changecontent()" id="addbtn" type="submit"> Add to Cart</button>
+        </form>
         </div>
         </div>
     </div>
@@ -185,6 +192,9 @@ width: 20px
      divData.value=cnt ;
      console.log(cnt);}
             else return;
+    }
+    function changecontent(){
+       alert('Itme is added to cart ');
     }
 
  function add(){
