@@ -22,6 +22,13 @@ class ProductController extends Controller
       return View('product.index',['products'=>$products]);
        
     }
+    public function userindex()
+    {
+       $products= Product::paginate(15);
+
+      return View('home',['products'=>$products]);
+       
+    }
 
     /**
      * Show the form for creating a new resource.

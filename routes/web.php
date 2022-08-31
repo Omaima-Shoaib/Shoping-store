@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 // Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ProductController::class, 'userindex'])->name('home');
 
 
 //admin routes
