@@ -46,5 +46,15 @@ Route::put('admin/products/{id}',[ProductController::class,'update'])->name('pro
 Route::get('admin/{id}',[UserController::class,'show'])->name('users.show');
 
 
+//user routesg
+Route::get('product/',[ProductController::class,'filterByCategory'])->name('products.filterByCategory');
+Route::get('productGetById/{id}',[ProductController::class,'get'])->name('products.get')->middleware(['auth']);
+Route::get('favorite/{userId}/{productId}',[FavoritesController::class,'create'])->name('favorites.create')->middleware(['auth']);
+Route::get('favorite/{userId}',[FavoritesController::class,'get'])->name('favorites.get')->middleware(['auth']);
+Route::post('/cart',[CartController::class,'store'])->name('cart.store')->middleware('auth');
+Route ::get('/cart',[CartController::class,'index'])->name('cart.index')->middleware(['auth']);
+Route::delete('/cart/{id}',[CartController::class,'delete'])->where('id','[0-9]+') ->name('cart.delete')->middleware(['auth']);
+Route::post('/order',[OrderController::class,'store'])->name('order.store')->middleware('auth');
+Route ::get('/order',[OrderController::class,'index'])->name('order.index')->middleware(['auth']);
 
 
