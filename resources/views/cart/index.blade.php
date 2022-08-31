@@ -146,7 +146,7 @@
 
 <div class="component">
   <div class="imgcontainer"> 
-    <table border="1"style='width:800px'>
+    <table border="0"style='width:900px'>
         <tr>
     <td class="img">  <img src='{{ Storage::disk('images')->url($cart->image) }}' width=100px height=100px   style='border-radius:20px;margin-top:10px'></div></td>
     <td class="title" style=""> {{ $cart['category'] }}</td>
@@ -192,24 +192,30 @@
   <div class="title">Total after discount:</div>
   <div class="value">
     @if($user->membership=='Gold')
-    ${{number_format((float)$carttotal-($carttotal*(15/100)), 2, '.', '');}}
+   ${{$discount=number_format((float)$carttotal-($carttotal*(15/100)), 2, '.', '');}}
     @elseif($user->membership=='Platinum')
-    ${{number_format((float)$carttotal-($carttotal*(10/100)), 2, '.', '');}}
+     ${{$discount=number_format((float)$carttotal-($carttotal*(10/100)), 2, '.', '');}}
     @else
     No discount
+    ${{$discount=$carttotal}}
     @endif
 
   </div>
   <br>
   <div class="add-box-container">
-    <form action="">
-        <input type="text" name="address" id="address" required placeholder="Delivery address">
-    </form>
+    
+
 </div>
 
 <div class="add-box-container">
-    <form action="">
-        <button class="checkout">Proceed to checkout</button>
+    <form  action=" {{ route('order.store',['products'=>$products]) }}" method='POST' >
+        @csrf
+        @method('post')
+        <input type="text" name="address" id="address" required placeholder="Delivery address">
+        <input type="text" hidden value="{{ $discount }}" name="total">
+        <input type="text" name="products" value="{{ $products }}" hidden id="">
+        <input type="text" name="quantity" value="{{ $count }}" hidden id="">
+        <button type="submit" class="checkout">Proceed to checkout</button>
     </form>
 </div>
 

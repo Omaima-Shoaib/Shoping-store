@@ -31,7 +31,7 @@
         display: inline;
         border-radius: 20px;
         padding-left: 10px;
-        height: 450px;
+        height: 500px;
     }
     .key{
             display: inline-flex;

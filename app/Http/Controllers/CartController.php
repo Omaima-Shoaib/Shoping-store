@@ -20,7 +20,7 @@ class CartController extends Controller
         $user=User::where('id',Auth::id())->first();
         
                 $carts=Cart::where('user_id',Auth::id())->paginate(5);
-        // $products=Product::paginate(15);
+        // $products=Product::where('user_id',Auth::id());
         $carttotal=Cart::where('user_id',Auth::id())->sum('total');
         $cartcount=Cart::where('user_id',Auth::id())->count();
     //   dd($carttotal);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,7 @@ Route::get('productGetById/{id}',[ProductController::class,'get'])->name('produc
 Route::post('/cart',[CartController::class,'store'])->name('cart.store')->middleware('auth');
 Route ::get('/cart',[CartController::class,'index'])->name('cart.index')->middleware(['auth']);
 Route::delete('/cart/{id}',[CartController::class,'delete'])->where('id','[0-9]+') ->name('cart.delete')->middleware(['auth','isAdmin']);
+Route::post('/order',[OrderController::class,'store'])->name('order.store')->middleware('auth');
 
 
 
