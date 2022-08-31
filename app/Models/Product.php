@@ -14,4 +14,7 @@ class Product extends Model
         'description',
         'image',
     ];
+    public function favorites(){
+        return $this->hasMany('App\Models\Favorites','product_id');
+    }
 }
