@@ -34,6 +34,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //admin routes
 Route::get('admin/users',[UserController::class,'index'])->name('users.index')->middleware('auth')->middleware(['auth','isAdmin']);
+Route::get('admin/findusers',[UserController::class,'findusers'])->name('findusers.index')->middleware('auth')->middleware(['auth','isAdmin']);
+Route::delete('admin/user/{id}',[UserController::class,'delete'])->where('id','[0-9]+') ->name('user.delete')->middleware(['auth']);
 Route::get('admin/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products')->middleware(['auth','isAdmin']);
 Route::get('admin/products/create' ,[ProductController::class,'create'])->name('products.create')->middleware(['auth','isAdmin']);
 Route::post('/admin/products',[ProductController::class,'store'])->name('products.store')->middleware(['auth','isAdmin']);
@@ -45,12 +47,13 @@ Route ::get('admin/{id}',[UserController::class,'show'])->name('users.show');
 
 
 //user routesg
-Route::get('product/{category}',[ProductController::class,'filterByCategory'])->name('products.filterByCategory');
+Route::get('product/',[ProductController::class,'filterByCategory'])->name('products.filterByCategory');
 Route::get('productGetById/{id}',[ProductController::class,'get'])->name('products.get')->middleware(['auth']);
 Route::post('/cart',[CartController::class,'store'])->name('cart.store')->middleware('auth');
 Route ::get('/cart',[CartController::class,'index'])->name('cart.index')->middleware(['auth']);
-Route::delete('/cart/{id}',[CartController::class,'delete'])->where('id','[0-9]+') ->name('cart.delete')->middleware(['auth','isAdmin']);
+Route::delete('/cart/{id}',[CartController::class,'delete'])->where('id','[0-9]+') ->name('cart.delete')->middleware(['auth']);
 Route::post('/order',[OrderController::class,'store'])->name('order.store')->middleware('auth');
+Route ::get('/order',[OrderController::class,'index'])->name('order.index')->middleware(['auth']);
 
 
 

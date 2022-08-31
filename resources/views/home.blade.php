@@ -21,18 +21,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+           <form action="{{ route('products.filterByCategory')}}">
+            <input type="text" name="category" placeholder="Search Product" style="font-size: 18px" id="">
+            
+            <button type="submit" style="background-color: transparent;border: none;text-align: center;width: fit-content;height: fit-content;">
+                <span class="material-symbols-outlined" style="color: #112739;width:30px;">
+                search
+                </span>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+            </button>
+           </form>
             </div>
         </div>
     </div>

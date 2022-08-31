@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +19,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::join('order_products', 'order_products.product_id', '=', 'products.id')->where('order_products.user_id', '=',Auth::id())->paginate(5);;
+       $order_products=OrderProduct::where('user_id',Auth::id())->get();
+
+       foreach($order_products as $order_product){
+        //  dd($order_products);
+       $orders=Order::where('user_id',Auth::id())->get(); 
+       $count=Order::where('user_id',Auth::id())->count(); 
+
+        return view('orders.index',['products'=>$products,'count'=>$count,'order_product'=>$order_product,'order_products'=>$order_products,'orders'=>$orders]);
+       }
     }
 
     /**
@@ -38,14 +50,15 @@ class OrderController extends Controller
     public function store(Request $request,Product $products)
     {
         // dd($request['products']);   
+        $myurl = url()->previous();
+    
+        if($request['quantity']>0){
             $arr=json_decode($request['products'],true);
          
 // dd($arr);
          $order=Order::create(['user_id'=>Auth::id(),'quantity'=>$request['quantity'],'total'=>$request['total'],
         'address'=>$request['address']]);
-
         $myproducts=$products;
-
 // dd($products);
 
         foreach($arr as $myarr){
@@ -55,9 +68,12 @@ class OrderController extends Controller
      $order->orderproducts()->create(['product_id'=>$myarr['product_id'],'user_id'=>Auth::id(),'category'=>$myarr['category']]);
   
         }
-
+    Cart::where('user_id',Auth::id())->delete();
         // dd($x);
-        return 'stored :)';
+        return view('orders.thankyou');
+    }else
+    return redirect($myurl);
+
     }
 
     /**

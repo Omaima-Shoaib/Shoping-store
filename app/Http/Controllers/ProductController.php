@@ -116,9 +116,11 @@ class ProductController extends Controller
         return redirect('admin/products');
     }
 
-    public function filterByCategory($category){
-        $products = Product::where("category", $category)->paginate(15);
-        return response()->json($products,200);
+    public function filterByCategory(Request $request){
+        $products = Product::where("category", $request['category'])->paginate(15);
+        // dd($request);
+        return View('product.userindex',['products'=>$products]);
+      
     }
 
     public function get($id){

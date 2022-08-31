@@ -116,7 +116,7 @@
                 <option value="name">Name</option>
                 <option value="email">Email</option>
             </select>
-            <input type="text" name="input"  id="">
+            <input type="text" name="input" placeholder="search user" id="">
 
             <button type="submit" style="background-color: transparent;border: none;text-align: center;width: fit-content;height: fit-content;">
                 <span class="material-symbols-outlined" style="color: #112739;width:30px;padding-top: 2px">
@@ -125,6 +125,18 @@
 
             </button>
              </form>
+             <br>
+             <form action="{{ route('findusers.index')}}" method="getx">
+           
+                <input type="text" name="category" placeholder="search users who bought..." id="">
+    
+                <button type="submit" style="background-color: transparent;border: none;text-align: center;width: fit-content;height: fit-content;">
+                    <span class="material-symbols-outlined" style="color: #112739;width:30px;padding-top: 2px">
+                    search
+                    </span>
+    
+                </button>
+                 </form>
     </div>
     
     <div class="mycon">
@@ -153,7 +165,7 @@
 
     <td><div class="btndelete">
         
-        <form action="{{ route('products.delete',['id'=>$user['id']]) }}" method="POST">
+        <form action="{{ route('user.delete',['id'=>$user['id']]) }}" method="POST">
             @csrf
             @method('Delete')
         <button type='submit' class="btnss">

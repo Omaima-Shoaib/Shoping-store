@@ -17,6 +17,12 @@ class UserController extends Controller
        $users=User::paginate(10);
         return view('users.index',['users'=>$users]);
     }
+    public function findusers(Request $request)
+    {
+       $users = User::join('order_products', 'order_products.user_id', '=', 'users.id')->where('order_products.category', '=',$request['category'])->paginate(5);;
+// dd($request['category']);
+        return view('users.index',['users'=>$users]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -82,8 +88,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $myurl = url()->previous();
+
+        User::where('id',$id)->delete();
+    return redirect($myurl);
+        
     }
 }

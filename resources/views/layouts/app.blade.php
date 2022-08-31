@@ -49,12 +49,9 @@
                     
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li>Home</li>
-
-                        <li><a href=" {{ route('cart.index') }}">
-                            <span class="material-symbols-outlined" style="font-size: 20x;">
-                            shopping_cart
-                            </span></a></li>
+                        <li><a style="text-decoration: none" href="{{ route('home') }}"> Home</a></li>
+                        <li><a style="text-decoration: none" href="{{ route('order.index')}}">Orders</a> </li>
+                        <li><a style="text-decoration: none" href=" {{ route('cart.index') }}">Cart</a></li>
                         </ul>
     
                     <!-- Right Side Of Navbar -->

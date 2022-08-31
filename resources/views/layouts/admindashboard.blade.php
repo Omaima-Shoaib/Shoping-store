@@ -65,9 +65,7 @@
                     Users
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('products') }}">
-                        New Admin
-                        </a>
+                      
                         <a class="dropdown-item" href="{{ route('users.index') }}">
                         List Users
                         </a>
