@@ -21,14 +21,19 @@ class OrderController extends Controller
     {
         $products = Product::join('order_products', 'order_products.product_id', '=', 'products.id')->where('order_products.user_id', '=',Auth::id())->paginate(5);;
        $order_products=OrderProduct::where('user_id',Auth::id())->get();
+       $count=OrderProduct::where('user_id',Auth::id())->count(); 
 
+      
+       
+    if($count>0){   
        foreach($order_products as $order_product){
         //  dd($order_products);
        $orders=Order::where('user_id',Auth::id())->get(); 
-       $count=Order::where('user_id',Auth::id())->count(); 
-
         return view('orders.index',['products'=>$products,'count'=>$count,'order_product'=>$order_product,'order_products'=>$order_products,'orders'=>$orders]);
-       }
+       }}
+else{
+    return view('orders.empty');
+}
     }
 
     /**

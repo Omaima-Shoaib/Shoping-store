@@ -47,7 +47,7 @@ Route::get('product/',[ProductController::class,'filterByCategory'])->name('prod
 Route::get('productGetById/{id}',[ProductController::class,'get'])->name('products.get')->middleware(['auth']);
 
 Route::get('favorite/{userId}/{productId}',[FavoritesController::class,'create'])->name('favorites.create')->middleware(['auth']);
-Route::get('favorite/{userId}',[FavoritesController::class,'get'])->name('favorites.get')->middleware(['auth']);
+Route::get('favorite/',[FavoritesController::class,'get'])->name('favorites.get')->middleware(['auth']);
 
 Route::post('cart',[CartController::class,'store'])->name('cart.store')->middleware('auth');
 Route::get('cart',[CartController::class,'index'])->name('cart.index')->middleware(['auth']);

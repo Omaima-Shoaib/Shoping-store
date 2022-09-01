@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   <style>
+  
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
         .myimg{
             width: 40%;
             display: inline;
@@ -103,7 +113,7 @@ width: 30px;
         .crtbtncontainer{
             width: fit-content;
             margin: auto;
-            height: fit-content;
+
         }
         .crtbtn{
             margin: auto;
@@ -163,11 +173,19 @@ width: 30px;
             <input type="text" name="description" value=" {{$product['description'] }} " hidden>
 
           </div>
-          <div class='crtbtncontainer'>
+        
+          <div class='crtbtncontainer' >
+            
+           
           <button class="crtbtn" onclick="changecontent()" id="addbtn" type="submit"> Add to Cart</button>
+          <a href="{{ route('favorites.create',[Auth::id(),$product['id']]) }}" style="color: #112739">
+            <span class="material-symbols-outlined" style="font-size: 30px">
+                favorite
+                </span></a>
+            </div>
+            </div>    
         </form>
-        </div>
-        </div>
+      
     </div>
         @endforeach
     </div>

@@ -129,7 +129,6 @@
 
     <div class="leftside">
  <span style="color: #112739;font-size: 25px"> <b>Orders</b> </span>
-@if($count>0)
 <br>
 <br>
 <br>
