@@ -17,11 +17,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $products= Product::paginate(15);
+       $products= Product::paginate(30);
 
       return View('product.index',['products'=>$products]);
        
     }
+
+    
     public function userindex()
     {
        $products= Product::paginate(15);

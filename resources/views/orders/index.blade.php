@@ -126,6 +126,7 @@
     @extends('layouts.app')
     @section('content')
 
+    
 
     <div class="leftside">
  <span style="color: #112739;font-size: 25px"> <b>Orders</b> </span>
@@ -203,7 +204,7 @@
 
     @endforeach
    --}}
-    @else
+    {{-- @else
   <div class="empty">
 
     <span class="material-symbols-outlined" style="color: #2b4552;font-size: 90px">
@@ -215,7 +216,7 @@
 
   </div>
     @endif
-{{-- </div> --}}
+</div> --}}
 
     @endsection
 

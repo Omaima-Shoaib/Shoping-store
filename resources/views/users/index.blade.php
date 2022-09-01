@@ -160,7 +160,7 @@
     <tr>
     <td>
         
-        <a href="{{ route('products.edit',['id'=>$user['id']]) }}"><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></a></td>
+        {{-- <a href="{{ route('products.edit',['id'=>$user['id']]) }}"><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></a></td> --}}
         
 
     <td><div class="btndelete">

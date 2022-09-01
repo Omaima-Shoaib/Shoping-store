@@ -18,6 +18,7 @@ class CartController extends Controller
     public function index()
     {
         $user=User::where('id',Auth::id())->first();
+        $address=Auth::user()->address;
         
                 $carts=Cart::where('user_id',Auth::id())->paginate(5);
         // $products=Product::where('user_id',Auth::id());

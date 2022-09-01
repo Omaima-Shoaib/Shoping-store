@@ -111,6 +111,7 @@
     </div>
     @foreach ($products as $product)
  <div class="mycon">
+    
 <tr id="myrow">
 <td class="tdtopleft">{{$product['category'] }}</div></td></td>
 <td >{{$product['description'] }}</div></td>
@@ -121,7 +122,9 @@
     <tr>
     <td>
         
-        <a href="{{ route('products.edit',['id'=>$product['id']]) }}"><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></a></td>
+        <a href="{{ route('products.edit',['id'=>$product['id']]) }}">
+            <div class="btnview"><button type="submit" class="btns"> 
+                <b>Edit</b></button></div></a></td>
         
 
     <td><div class="btndelete">

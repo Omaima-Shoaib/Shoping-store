@@ -52,7 +52,7 @@
                         <li><a style="text-decoration: none" href="{{ route('home') }}"> Home</a></li>
                         <li><a style="text-decoration: none" href="{{ route('order.index')}}">Orders</a> </li>
                         <li><a style="text-decoration: none" href=" {{ route('cart.index') }}">Cart</a></li>
-                        <li><a style="text-decoration: none" href=" {{ route('favorites.get',Auth::id()) }}">Favorite</a></li>
+                        <li><a style="text-decoration: none" href=" {{ route('favorites.get') }}">Favorite</a></li>
                         </ul>
     
                     <!-- Right Side Of Navbar -->

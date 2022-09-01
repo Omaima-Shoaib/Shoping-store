@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>Document</title>
     <style>
         /* .mycon{
@@ -85,7 +86,7 @@
     </style>
 </head>
 <body>
-    @extends('layouts.admindashboard')
+    @extends('layouts.app')
     @section('content')
 
 
@@ -102,11 +103,11 @@
     cellpadding="20"
     cellspacing="5">
     <tr>
-        <th class="mycption">Category</th>
-        <th class="mydesc">Description</th>
-        <th class="myprice">Price </th>
-        <th class="myimge">Image</th>
-        <th  class="action">Action</th>
+        <th style="color: transparent" class="mycption">Category</th>
+        <th style="color: transparent" class="mydesc">Description</th>
+        <th style="color: transparent" class="myprice">Price </th>
+        {{-- {{- style="color: transparent"- <th class="myimge">Image</th> --} --}}
+        <th style="color: transparent"  class="action" style="width: 100px">Action</th>
     </tr>
     </div>
     @foreach ($products as $product)
@@ -121,16 +122,17 @@
     <tr>
     <td>
         
-        <a href="{{ route('products.edit',['id'=>$product['id']]) }}"><div class="btnview"><button type="submit" class="btns"> <b>Edit</b></button></div></a></td>
         
 
     <td><div class="btndelete">
         
-        <form action="{{ route('products.delete',['id'=>$product['id']]) }}" method="POST">
+        <form action="{{ route('favorites.delete',$product['id']) }}" method="post">
             @csrf
             @method('Delete')
-        <button type='submit' class="btnss">
-         Delete</button>
+        <button style="border: none;background-color: transparent;" ><span class="material-symbols-outlined" style="font-size: 30px">
+            delete
+            </span></button></td>
+        </tr>
         </form>
     </div></td>   
        
@@ -145,7 +147,6 @@
 
 
 @endforeach
-{{-- {{ $products->links() }} --}}
 
 @endsection
 </table>

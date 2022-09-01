@@ -19,6 +19,7 @@ class UserController extends Controller
     }
     public function findusers(Request $request)
     {
+        
        $users = User::join('order_products', 'order_products.user_id', '=', 'users.id')->where('order_products.category', '=',$request['category'])->paginate(5);;
 // dd($request['category']);
         return view('users.index',['users'=>$users]);

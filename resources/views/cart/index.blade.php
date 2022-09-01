@@ -234,7 +234,7 @@
     <form  action=" {{ route('order.store',['products'=>$products]) }}" method='POST' >
         @csrf
         @method('post')
-        <input type="text" name="address" id="address" required placeholder="Delivery address">
+        <input type="text" name="address" id="address" required value="{{Auth::user()->address}}">
         <input type="text" hidden value="{{ $discount }}" name="total">
         <input type="text" name="products" value="{{ $products }}" hidden id="">
         <input type="text" name="quantity" value="{{ $count }}" hidden id="">
